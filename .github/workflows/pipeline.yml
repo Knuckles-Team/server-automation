@@ -1,0 +1,54 @@
+name: Transmission Service
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  standup_service:
+    runs-on: self-hosted
+    permissions: write-all
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Configure Environment Variables
+        id: config_env
+        run: |
+          sed -i "s///" ./inventory.txt
+          echo "OPENVPN_USERNAME=${{ secrets.NORDVPN_USERNAME }}" | tee -a .env
+          echo "OPENVPN_PASSWORD=${{ secrets.NORDVPN_PASSWORD }}" | tee -a .env
+          echo "PUID=${{ secrets.PUID }}" | tee -a .env
+          echo "OPENVPN_OPTS='${{ secrets.OPENVPN_OPTS }}'" | tee -a .env
+          echo "CREATE_TUN_DEVICE=${{ secrets.CREATE_TUN_DEVICE }}" | tee -a .env
+          echo "VIRTUAL_HOST=${{ secrets.VIRTUAL_HOST }}" | tee -a .env
+          echo "VIRTUAL_PORT=${{ secrets.VIRTUAL_PORT }}" | tee -a .env
+          echo "OPENVPN_PROVIDER=${{ secrets.OPENVPN_PROVIDER }}" | tee -a .env
+          echo "NORDVPN_COUNTRY=${{ secrets.NORDVPN_COUNTRY }}" | tee -a .env
+          echo "NORDVPN_CATEGORY=${{ secrets.NORDVPN_CATEGORY }}" | tee -a .env
+          echo "NORDVPN_PROTOCOL=${{ secrets.NORDVPN_PROTOCOL }}" | tee -a .env
+          echo "LOCAL_NETWORK=${{ secrets.LOCAL_NETWORK }}" | tee -a .env
+          echo "COMPOSE_HTTP_TIMEOUT=300" | tee -a .env
+          echo "RUNNERS=1" | tee -a .env
+          echo -e "Environment Variables Set!\nUploading Artifact..."
+          cat ./.env >> $GITHUB_ENV
+          source ./.env
+
+      - name: Pull Image
+        id: pull_image
+        run: docker compose pull
+
+      - name: Build Image
+        id: build_image
+        run: docker compose build
+
+      - name: Bring Down Services
+        id: services_down
+        run: docker compose down || echo "Services Appear to be Down Already"
+
+      - name: Bring Up Services
+        id: services_up
+        run: |
+          echo "Running ${{ env.RUNNERS }} instances"
+          docker compose up --build -d
