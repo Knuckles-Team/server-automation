@@ -26,4 +26,4 @@ jobs:
 
       - name: Run Playbook
         id: run_playbook
-        run: docker run -i server_automation:latest'
+        run: docker run -i server_automation:latest
