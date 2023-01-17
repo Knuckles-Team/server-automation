@@ -76,7 +76,7 @@
   strategy: free
   tasks:
     - name: Checking if Docker is Already Installed
-      shell: [ -d "{{ directory }}/automation" ] && echo "true"
+      shell: if [[ -d "{{ directory }}/automation" ]]; then echo "true"; fi
       register: automation_cloned
 
     - name: Create a directory if it does not exist
