@@ -22,7 +22,7 @@ jobs:
 
       - name: Build Image
         id: build_image
-        run: docker build -t server_automation:latest ./Dockerfile
+        run: docker build -t server_automation:latest .
 
       - name: Run Playbook
         id: run_playbook
