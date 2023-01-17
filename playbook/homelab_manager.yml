@@ -98,13 +98,13 @@
       become: yes
       shell: git config --global --add safe.directory "{{ directory }}/*"
 
-    - name: Cloning Remaining Repositories
-      become: yes
-      shell: repository-manager -d "{{ directory }}" -f "{{ directory }}/automation/repositories.txt" -c -p -b
+    # - name: Cloning Remaining Repositories
+    #   become: yes
+    #   shell: repository-manager -d "{{ directory }}" -f "{{ directory }}/automation/repositories.txt" -c -p -b
 
-    - name: Adding Remaining Development Repositories as Safe Directories
-      become: yes
-      shell: git config --global --add safe.directory "{{ directory }}/*"
+    # - name: Adding Remaining Development Repositories as Safe Directories
+    #   become: yes
+    #   shell: git config --global --add safe.directory "{{ directory }}/*"
 
 - name: Installing Ubuntu Server Dependencies
   hosts: poweredge
