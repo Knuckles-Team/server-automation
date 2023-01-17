@@ -8,8 +8,7 @@ r510 ansible_host=192.168.1.60
 r710 ansible_host=192.168.1.196
 
 [raspberry]
-r510 ansible_host=192.168.1.60 
-r710 ansible_host=192.168.1.196
+rpi4 ansible_host=192.168.1.150
 
 [homelab:vars]
 ansible_user=ansible
