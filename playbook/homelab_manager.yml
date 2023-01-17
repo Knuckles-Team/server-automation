@@ -143,7 +143,7 @@
   strategy: free
   tasks:
     - name: Checking if Docker is Already Installed
-      shell: if sudo systemctl list-units --full -all | grep -Fq "docker"; then echo "true"; fi;
+      shell: if sudo systemctl list-units --full -all | grep -Fq "docker"; then echo "true"; else echo "false"; fi;
       register: docker_installed
 
     - name: Creating Docker Keyring Directory
@@ -151,31 +151,31 @@
         path: /etc/apt/keyrings
         state: directory
         mode: '0755'
-      when: docker_installed == "0"
+      when: docker_installed == "false"
 
     - name: Downloading Docker Keyring
       shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-      when: docker_installed == "0"
+      when: docker_installed == "false"
 
     - name: Adding Docker to Keyring
       shell: echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-      when: docker_installed == "0"
+      when: docker_installed == "false"
 
     - name: Giving Permissions to Docker Keyring
       shell: sudo chmod a+r /etc/apt/keyrings/docker.gpg
-      when: docker_installed == "0"
+      when: docker_installed == "false"
       
     - name: Waiting for DPKG to be Unlocked
       become: yes
       shell:  while sudo fuser /var/lib/dpkg/lock >/dev/null 2>&1; do sleep 5; done;
-      when: docker_installed == "0"
+      when: docker_installed == "false"
       
     - name: Updating Ubuntu Apt Cache
       become: yes
       apt:
         update_cache: yes
         force_apt_get: yes
-      when: docker_installed == "0"
+      when: docker_installed == "false"
              
     - name: Installing Docker
       become: yes
@@ -186,14 +186,14 @@
           - containerd.io  
           - docker-compose-plugin
         state: present
-      when: docker_installed == "0"
+      when: docker_installed == "false"
 
 - name: Installing Cockpit
   hosts: homelab
   strategy: free
   tasks:
     - name: Checking if Cockpit is Already Installed
-      shell: if sudo systemctl list-units --full -all | grep -Fq "cockpit.socket"; then echo "true"; fi;
+      shell: if sudo systemctl list-units --full -all | grep -Fq "cockpit.socket"; then echo "true"; else echo "false"; fi;
       register: cockpit_installed
 
     - name: Print return information from the previous task
@@ -204,11 +204,11 @@
     - name: Waiting for DPKG to be Unlocked
       become: yes
       shell:  while sudo fuser /var/lib/dpkg/lock >/dev/null 2>&1; do sleep 5; done;
-      when: cockpit_installed | int == 0
+      when: cockpit_installed == "false"
   
     - name: Downloading Docker Cockpit Plugin
       shell: wget https://launchpad.net/ubuntu/+source/cockpit/215-1~ubuntu19.10.1/+build/18889196/+files/cockpit-docker_215-1~ubuntu19.10.1_all.deb && sudo apt install -y ./cockpit-docker_215-1~ubuntu19.10.1_all.deb
-      when: cockpit_installed | int == 0
+      when: cockpit_installed == "false"
              
     - name: Installing Cockpit
       become: yes
@@ -222,12 +222,12 @@
           - cockpit-storaged  
           - cockpit-networkmanager
         state: present
-      when: cockpit_installed | int == 0
+      when: cockpit_installed == "false"
 
     - name: Waiting for DPKG to be Unlocked
       become: yes
       shell: sudo systemctl start cockpit.socket; sudo systemctl enable --now cockpit.socket
-      when: cockpit_installed | int == 0
+      when: cockpit_installed == "false"
       
       
 - name: Cleaning System
