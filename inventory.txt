@@ -1,29 +1,29 @@
 [homelab]
-r510 ansible_host=192.168.1.60 
-r710 ansible_host=192.168.1.196
-rpi4 ansible_host=192.168.1.150
+r510 ansible_host=R510
+r710 ansible_host=R710
+rpi4 ansible_host=RPI4
 
 [poweredge]
-r510 ansible_host=192.168.1.60 
-r710 ansible_host=192.168.1.196
+r510 ansible_host=R510
+r710 ansible_host=R710
 
 [raspberry]
-rpi4 ansible_host=192.168.1.150
+rpi4 ansible_host=RPI4
 
 [homelab:vars]
-ansible_user=ansible
-ansible_ssh_user=ansible
+ansible_user=USER
+ansible_ssh_user=USER
 ansible_ssh_pass=PASSWORD
 ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
 
 [poweredge:vars]
-ansible_user=ansible
-ansible_ssh_user=ansible
+ansible_user=USER
+ansible_ssh_user=USER
 ansible_ssh_pass=PASSWORD
 ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
 
 [raspberry:vars]
-ansible_user=ansible
-ansible_ssh_user=ansible
+ansible_user=USER
+ansible_ssh_user=USER
 ansible_ssh_pass=PASSWORD
 ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
