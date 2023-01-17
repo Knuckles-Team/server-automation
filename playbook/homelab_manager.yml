@@ -199,11 +199,11 @@
     - name: Waiting for DPKG to be Unlocked
       become: yes
       shell:  while sudo fuser /var/lib/dpkg/lock >/dev/null 2>&1; do sleep 5; done;
-      when: cockpit_installed == "0"
+      when: cockpit_installed == 0
   
     - name: Downloading Docker Cockpit Plugin
       shell: wget https://launchpad.net/ubuntu/+source/cockpit/215-1~ubuntu19.10.1/+build/18889196/+files/cockpit-docker_215-1~ubuntu19.10.1_all.deb && sudo apt install -y ./cockpit-docker_215-1~ubuntu19.10.1_all.deb
-      when: cockpit_installed == "0"
+      when: cockpit_installed == 0
              
     - name: Installing Cockpit
       become: yes
@@ -217,7 +217,7 @@
           - cockpit-storaged  
           - cockpit-networkmanager
         state: present
-      when: cockpit_installed == "0"
+      when: cockpit_installed == 0
       
 - name: Cleaning System
   hosts: homelab
