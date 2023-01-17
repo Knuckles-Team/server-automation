@@ -26,4 +26,4 @@ jobs:
 
       - name: Run Playbook
         id: run_playbook
-        run: ls -la; docker run -i server_automation:latest bash -c 'ansible-playbook -vvvv -i inventory.txt ./manage_homelab.yml'
+        run: docker run -i server_automation:latest bash -c 'ls -la; ansible-playbook -vvvv -i /inventory.txt /manage_homelab.yml'
