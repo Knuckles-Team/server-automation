@@ -78,7 +78,7 @@
     - name: Create a directory if it does not exist
       become: yes
       ansible.builtin.file:
-        path: /Development
+        path: /home/genius/Development
         state: directory
         mode: '0755'
 
@@ -86,7 +86,7 @@
       become: yes
       ansible.builtin.git:
         repo: https://github.com/Knuckles-Team/automation.git
-        dest: /Development/automation
+        dest: /home/genius/Development/automation
 
     - name: Adding Development as Safe Directory
       become: yes
@@ -94,7 +94,7 @@
 
     - name: Cloning Remaining Repositories
       become: yes
-      shell: repository-manager -d "/Development" -f "/Development/automation/repositories.txt" -c -p -b
+      shell: repository-manager -d "/home/genius/Development" -f "/home/genius/Development/automation/repositories.txt" -c -p -b
 
     - name: Adding Remaining Development Repositories as Safe Directories
       become: yes
