@@ -75,19 +75,25 @@
   hosts: poweredge
   strategy: free
   tasks:
+    - name: Checking if Docker is Already Installed
+      shell: [ -d "{{ directory }}/automation" ] && echo "true"
+      register: automation_cloned
+
     - name: Create a directory if it does not exist
       become: yes
       ansible.builtin.file:
         path: "{{ directory }}"
         state: directory
         mode: '0755'
+      when: automation_cloned == "true"
 
     - name: Cloning Automation Repository
       become: yes
       ansible.builtin.git:
         repo: https://github.com/Knuckles-Team/automation.git
         dest: "{{ directory }}/automation"
-
+      when: automation_cloned == "true"
+      
     - name: Adding Development as Safe Directory
       become: yes
       shell: git config --global --add safe.directory "/Development/*"
