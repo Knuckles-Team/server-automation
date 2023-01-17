@@ -143,7 +143,7 @@
   strategy: free
   tasks:
     - name: Checking if Docker is Already Installed
-      shell: which docker | wc -l
+      shell: if sudo systemctl list-units --full -all | grep -Fq "docker"; then echo "true"; fi;
       register: docker_installed
 
     - name: Creating Docker Keyring Directory
@@ -193,7 +193,7 @@
   strategy: free
   tasks:
     - name: Checking if Cockpit is Already Installed
-      shell: which cockpit | wc -l
+      shell: if sudo systemctl list-units --full -all | grep -Fq "cockpit.socket"; then echo "true"; fi;
       register: cockpit_installed
 
     - name: Print return information from the previous task
@@ -223,6 +223,12 @@
           - cockpit-networkmanager
         state: present
       when: cockpit_installed | int == 0
+
+    - name: Waiting for DPKG to be Unlocked
+      become: yes
+      shell: sudo systemctl start cockpit.socket; sudo systemctl enable --now cockpit.socket
+      when: cockpit_installed | int == 0
+      
       
 - name: Cleaning System
   hosts: homelab
