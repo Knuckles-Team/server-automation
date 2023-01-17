@@ -19,7 +19,7 @@ jobs:
         id: config_inventory
         run: |
           sed -i "s/PASSWORD/${{ secrets.HOMELAB_PASSWORD }}/" ./inventory.txt
-          sed -i "s#directory=.*$#directory='${{ secrets.DIRECTORY }}'#g" ./Dockerfile
+          sed -i "s#directory=/home/ansible/Development#directory=${{ secrets.DIRECTORY }}#" ./Dockerfile
 
       - name: Build Image
         id: build_image
