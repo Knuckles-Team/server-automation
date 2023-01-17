@@ -8,7 +8,7 @@ on:
       - 'main'
 
 jobs:
-  standup_service:
+  server_maintenance:
     runs-on: self-hosted
     permissions: write-all
     steps:
@@ -22,7 +22,7 @@ jobs:
 
       - name: Build Image
         id: build_image
-        run: docker build -t server_automation:latest ../Dockerfile
+        run: docker build -t server_automation:latest ./Dockerfile
 
       - name: Run Playbook
         id: run_playbook
