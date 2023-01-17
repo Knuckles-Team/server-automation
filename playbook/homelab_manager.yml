@@ -62,10 +62,10 @@
           - gcc
         state: present
 
-  - name: Installing Python Dependencies
-    hosts: poweredge
-    strategy: free
-    tasks:
+- name: Installing Python Dependencies
+  hosts: poweredge
+  strategy: free
+  tasks:
     - name: Installing Python Dependencies
       become: yes
       ansible.builtin.pip:
