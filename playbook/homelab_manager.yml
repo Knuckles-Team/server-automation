@@ -96,7 +96,7 @@
       
     - name: Adding Development as Safe Directory
       become: yes
-      shell: git config --global --add safe.directory "/Development/*"
+      shell: git config --global --add safe.directory "{{ directory }}/*"
 
     - name: Cloning Remaining Repositories
       become: yes
