@@ -192,7 +192,7 @@
   hosts: homelab
   strategy: free
   tasks:
-    - name: Checking if Docker is Already Installed
+    - name: Checking if Cockpit is Already Installed
       shell: which cockpit | wc -l
       register: cockpit_installed
 
