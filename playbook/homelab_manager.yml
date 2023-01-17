@@ -78,7 +78,7 @@
     - name: Create a directory if it does not exist
       become: yes
       ansible.builtin.file:
-        path: {{ directory }}
+        path: "{{ directory }}"
         state: directory
         mode: '0755'
 
@@ -86,11 +86,11 @@
       become: yes
       ansible.builtin.git:
         repo: https://github.com/Knuckles-Team/automation.git
-        dest: {{ directory }}/automation
+        dest: "{{ directory }}/automation"
 
     - name: Adding Development as Safe Directory
       become: yes
-      shell: git config --global --add safe.directory '/Development/*'
+      shell: git config --global --add safe.directory "/Development/*"
 
     - name: Cloning Remaining Repositories
       become: yes
@@ -98,7 +98,7 @@
 
     - name: Adding Remaining Development Repositories as Safe Directories
       become: yes
-      shell: git config --global --add safe.directory '{{ directory }}/*'
+      shell: git config --global --add safe.directory "{{ directory }}/*"
 
 - name: Installing Ubuntu Server Dependencies
   hosts: poweredge
