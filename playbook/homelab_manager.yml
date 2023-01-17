@@ -88,9 +88,17 @@
         repo: https://github.com/Knuckles-Team/automation.git
         dest: /Development/automation
 
+    - name: Adding Development as Safe Directory
+      become: yes
+      shell: git config --global --add safe.directory '/Development/*'
+
     - name: Cloning Remaining Repositories
       become: yes
-      shell: git config --global --add safe.directory /Development/; repository-manager -d "/Development" -f "/Development/automation/repositories.txt" -c -p -b
+      shell: repository-manager -d "/Development" -f "/Development/automation/repositories.txt" -c -p -b
+
+    - name: Adding Remaining Development Repositories as Safe Directories
+      become: yes
+      shell: git config --global --add safe.directory '/Development/*'
 
 - name: Installing Ubuntu Server Dependencies
   hosts: poweredge
