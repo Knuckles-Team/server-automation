@@ -3,6 +3,9 @@ name: Server Maintenance
 on:
   schedule:
     - cron: "0 1 * * *"
+  push:
+    branches:
+      - 'main'
 
 jobs:
   standup_service:
