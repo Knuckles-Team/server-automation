@@ -26,4 +26,4 @@ jobs:
 
       - name: Run Playbook
         id: run_playbook
-        run: docker run -i server_automation:latest ansible-playbook -i inventory.txt manage_homelab.yml -e directory=${{ secrets.DIRECTORY }}]
+        run: docker run -i server_automation:latest python -m ansible playbook -i inventory.txt manage_homelab.yml -e directory=${{ secrets.DIRECTORY }}]
