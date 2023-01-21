@@ -255,4 +255,4 @@
 
     - name: Cleaning Docker
       become: yes
-      shell: sudo docker system prune -a -f
+      shell: sudo docker system prune --all --volumes --force
