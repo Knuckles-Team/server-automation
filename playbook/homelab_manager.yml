@@ -60,6 +60,7 @@
           - lm-sensors 
           - ipmitool
           - gcc
+          - rustc
         state: present
 
 - name: Installing Python Dependencies
