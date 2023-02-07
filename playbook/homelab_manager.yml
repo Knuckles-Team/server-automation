@@ -73,6 +73,19 @@
           - pip
           - geniusbot
           - ansible
+          - repository-manager
+          - systems-manager
+          - media-manager
+          - media-downloader
+          - gitlab-api
+          - servicenow-api
+          - cockpit-api
+          - genius-chatbot
+          - report-manager
+          - subshift
+          - webarchiver 
+          - listmonk-api
+          - audio-transcriber
         extra_args: --upgrade
 
 - name: Cloning Repositories
