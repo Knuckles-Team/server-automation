@@ -61,6 +61,10 @@
           - ipmitool
           - gcc
           - rustc
+          - libasound-dev 
+          - portaudio19-dev 
+          - libportaudio2 
+          - libportaudiocpp0
         state: present
 
 - name: Installing Python Dependencies
