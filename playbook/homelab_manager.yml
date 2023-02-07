@@ -39,27 +39,28 @@
     - name: Installing Ubuntu Dependencies
       become: yes
       apt: 
-        name:  
-          - dos2unix 
-          - wget 
-          - curl 
-          - git  
-          - python3  
-          - python3-pip  
-          - python-is-python3  
-          - atomicparsley  
-          - ffmpeg  
-          - gparted  
-          - jq  
-          - unzip  
-          - tmux  
-          - ca-certificates  
-          - gnupg  
-          - lsb-release  
+        name:
+          - dos2unix
+          - wget
+          - curl
+          - git
+          - python3
+          - python3-pip
+          - python-is-python3
+          - atomicparsley
+          - ffmpeg
+          - gparted
+          - jq
+          - unzip
+          - tmux
+          - ca-certificates
+          - gnupg
+          - lsb-release
           - trash-cli
-          - lm-sensors 
+          - lm-sensors
           - ipmitool
           - gcc
+          - rustc
         state: present
 
 - name: Installing Python Dependencies
@@ -264,3 +265,7 @@
       become: yes
       apt:
         autoremove: true
+
+    - name: Cleaning Docker
+      become: yes
+      shell: sudo docker system prune --all --volumes --force
