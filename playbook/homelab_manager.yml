@@ -65,7 +65,6 @@
           - portaudio19-dev 
           - libportaudio2 
           - libportaudiocpp0
-          - virtualbox
           - apt-transport-https
           - software-properties-common
         state: present
@@ -153,6 +152,7 @@
           - bridge-utils
           - lm-sensors 
           - ipmitool
+          - virtualbox
         state: present
 
     - name: Giving KVM Access to Ansible
