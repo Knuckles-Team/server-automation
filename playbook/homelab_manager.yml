@@ -65,6 +65,7 @@
           - portaudio19-dev 
           - libportaudio2 
           - libportaudiocpp0
+          - virtualbox
         state: present
 
 - name: Installing Python Dependencies
