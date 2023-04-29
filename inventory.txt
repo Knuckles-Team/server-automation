@@ -1,11 +1,13 @@
 [homelab]
 r510 ansible_host=R510
 r710 ansible_host=R710
+r820 ansible_host=R820
 rpi4 ansible_host=RPI4
 
 [poweredge]
 r510 ansible_host=R510
 r710 ansible_host=R710
+r820 ansible_host=R820
 
 [raspberry]
 rpi4 ansible_host=RPI4
