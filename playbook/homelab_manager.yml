@@ -67,6 +67,7 @@
           - libportaudiocpp0
           - apt-transport-https
           - software-properties-common
+          - qt5-qmake
         state: present
 
 - name: Installing Python Dependencies
@@ -93,6 +94,7 @@
           - webarchiver 
           - listmonk-api
           - audio-transcriber
+          - barchart-api
         extra_args: --upgrade
 
 - name: Cloning Repositories
