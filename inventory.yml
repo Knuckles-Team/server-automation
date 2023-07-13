@@ -1,31 +1,58 @@
-all:
-  hosts:
+---
 
-  children:
-    vars:
+homelab:
+  hosts:
+    r510:
+      ansible_host: 'R510'
       ansible_user: USER
       ansible_ssh_user: USER
       ansible_ssh_pass: PASSWORD
       ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
-    homelab:
-      hosts:
-        r510:
-          ansible_host: 'R510'
-        r710:
-          ansible_host: 'R710'
-#        r820:
-#          ansible_host: 'R820'
-        rpi4:
-          ansible_host: 'RPI4'
-    poweredge:
-      hosts:
-        r510:
-          ansible_host: 'R510'
-        r710:
-          ansible_host: 'R710'
-#        r820:
-#          ansible_host: 'R820'
-    raspberry:
-      hosts:
-        rpi4:
-          ansible_host: 'RPI4'
+    r710:
+      ansible_host: 'R710'
+      ansible_user: USER
+      ansible_ssh_user: USER
+      ansible_ssh_pass: PASSWORD
+      ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
+#    r820:
+#      ansible_host: 'R820'
+#      ansible_user: USER
+#      ansible_ssh_user: USER
+#      ansible_ssh_pass: PASSWORD
+#      ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
+    rpi4:
+      ansible_host: 'RPI4'
+      ansible_user: USER
+      ansible_ssh_user: USER
+      ansible_ssh_pass: PASSWORD
+      ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
+
+poweredge:
+  hosts:
+    r510:
+      ansible_host: 'R510'
+      ansible_user: USER
+      ansible_ssh_user: USER
+      ansible_ssh_pass: PASSWORD
+      ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
+    r710:
+      ansible_host: 'R710'
+      ansible_user: USER
+      ansible_ssh_user: USER
+      ansible_ssh_pass: PASSWORD
+      ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
+#    r820:
+#      ansible_host: 'R820'
+#      ansible_user: USER
+#      ansible_ssh_user: USER
+#      ansible_ssh_pass: PASSWORD
+#      ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
+
+raspberry:
+  hosts:
+    rpi4:
+      ansible_host: 'RPI4'
+      ansible_user: USER
+      ansible_ssh_user: USER
+      ansible_ssh_pass: PASSWORD
+      ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
