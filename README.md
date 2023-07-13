@@ -10,5 +10,5 @@ ansible ALL=(ALL) NOPASSWD:ALL
 
 ```bash
 export ANSIBLE_HOST_KEY_CHECKING=True
-ansible-playbook -i ./inventory.txt manage_homelab.yml
+ansible-playbook -i ./inventory.yml manage_homelab.yml
 ```

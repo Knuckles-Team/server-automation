@@ -18,11 +18,11 @@ jobs:
       - name: Configure Environment Variables
         id: config_inventory
         run: |
-          sed -i "s/PASSWORD/${{ secrets.HOMELAB_PASSWORD }}/" ./inventory.txt
-          sed -i "s/USER/${{ secrets.USER }}/" ./inventory.txt
-          sed -i "s/R510/${{ secrets.R510 }}/" ./inventory.txt
-          sed -i "s/R710/${{ secrets.R710 }}/" ./inventory.txt
-          sed -i "s/RPI4/${{ secrets.RPI4 }}/" ./inventory.txt
+          sed -i "s/PASSWORD/${{ secrets.HOMELAB_PASSWORD }}/" ./inventory.yml
+          sed -i "s/USER/${{ secrets.USER }}/" ./inventory.yml
+          sed -i "s/R510/${{ secrets.R510 }}/" ./inventory.yml
+          sed -i "s/R710/${{ secrets.R710 }}/" ./inventory.yml
+          sed -i "s/RPI4/${{ secrets.RPI4 }}/" ./inventory.yml
           sed -i "s#directory=/home/ansible/Development#directory=${{ secrets.DIRECTORY }}#" ./Dockerfile
 
       - name: Build Image
