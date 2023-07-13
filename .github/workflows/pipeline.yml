@@ -22,6 +22,7 @@ jobs:
           sed -i "s/USER/${{ secrets.USER }}/g" ./inventory.yml
           sed -i "s/R510/${{ secrets.R510 }}/g" ./inventory.yml
           sed -i "s/R710/${{ secrets.R710 }}/g" ./inventory.yml
+          sed -i "s/R820/${{ secrets.R820 }}/g" ./inventory.yml
           sed -i "s/RPI4/${{ secrets.RPI4 }}/g" ./inventory.yml
           sed -i "s#directory=/home/ansible/Development#directory=${{ secrets.DIRECTORY }}#g" ./Dockerfile
 
