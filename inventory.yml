@@ -9,11 +9,11 @@ homelab:
     #      ansible_host: 'R820'
     rpi4:
       ansible_host: 'RPI4'
-    vars:
-      ansible_user: USER
-      ansible_ssh_user: USER
-      ansible_ssh_pass: PASSWORD
-      ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
+  vars:
+    ansible_user: USER
+    ansible_ssh_user: USER
+    ansible_ssh_pass: PASSWORD
+    ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
 
 poweredge:
   hosts:
@@ -23,18 +23,18 @@ poweredge:
       ansible_host: 'R710'
     #    r820:
     #      ansible_host: 'R820'
-    vars:
-      ansible_user: USER
-      ansible_ssh_user: USER
-      ansible_ssh_pass: PASSWORD
-      ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
+  vars:
+    ansible_user: USER
+    ansible_ssh_user: USER
+    ansible_ssh_pass: PASSWORD
+    ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
 
 raspberry:
   hosts:
     rpi4:
       ansible_host: 'RPI4'
-    vars:
-      ansible_user: USER
-      ansible_ssh_user: USER
-      ansible_ssh_pass: PASSWORD
-      ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
+  vars:
+    ansible_user: USER
+    ansible_ssh_user: USER
+    ansible_ssh_pass: PASSWORD
+    ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
