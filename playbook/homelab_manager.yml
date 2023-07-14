@@ -89,7 +89,7 @@
           - servicenow-api
           - cockpit-api
           - genius-chatbot
-          - report-manager
+#          - report-manager
           - subshift
           - webarchiver 
           - listmonk-api
