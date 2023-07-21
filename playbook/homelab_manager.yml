@@ -68,6 +68,7 @@
           - apt-transport-https
           - software-properties-common
           - qt5-qmake
+          - pandoc
         state: present
 
 - name: Installing Python Dependencies
