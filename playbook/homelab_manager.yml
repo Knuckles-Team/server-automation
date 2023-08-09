@@ -18,6 +18,10 @@
       apt:
         upgrade: full
 
+    - name: Setting UDP Upload Limits
+      become: yes
+      shell: sysctl -w net.core.rmem_max=2500000; sysctl -w net.core.wmem_max=2500000;
+
 - name: Installing Ubuntu Dependencies
   hosts: homelab
   strategy: free
