@@ -9,6 +9,12 @@ homelab:
     #      ansible_host: 'R820'
     rpi4:
       ansible_host: 'RPI4'
+#    gamerig:
+#      ansible_host: 'GameRig'
+#    gpdwin4:
+#      ansible_host: 'GPDWin4'
+#    hpdv6:
+#      ansible_host: 'HPDV6'
   vars:
     ansible_user: USER
     ansible_ssh_user: USER
@@ -38,3 +44,17 @@ raspberry:
     ansible_ssh_user: USER
     ansible_ssh_pass: PASSWORD
     ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
+
+#windows:
+#  hosts:
+#    gamerig:
+#      ansible_host: 'GameRig'
+#    gpdwin4:
+#      ansible_host: 'GPDWin4'
+#    hpdv6:
+#      ansible_host: 'HPDV6'
+#  vars:
+#    ansible_user: USER
+#    ansible_ssh_user: USER
+#    ansible_ssh_pass: PASSWORD
+#    ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
