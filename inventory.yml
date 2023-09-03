@@ -5,10 +5,10 @@ homelab:
       ansible_host: 'R510'
     r710:
       ansible_host: 'R710'
-    #    r820:
-    #      ansible_host: 'R820'
-    rpi4:
-      ansible_host: 'RPI4'
+#    r820:
+#      ansible_host: 'R820'
+#    rpi4:
+#      ansible_host: 'RPI4'
 #    gamerig:
 #      ansible_host: 'GameRig'
 #    gpdwin4:
@@ -27,23 +27,23 @@ poweredge:
       ansible_host: 'R510'
     r710:
       ansible_host: 'R710'
-    #    r820:
-    #      ansible_host: 'R820'
+#    r820:
+#      ansible_host: 'R820'
   vars:
     ansible_user: USER
     ansible_ssh_user: USER
     ansible_ssh_pass: PASSWORD
     ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
 
-raspberry:
-  hosts:
-    rpi4:
-      ansible_host: 'RPI4'
-  vars:
-    ansible_user: USER
-    ansible_ssh_user: USER
-    ansible_ssh_pass: PASSWORD
-    ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
+#raspberry:
+#  hosts:
+#    rpi4:
+#      ansible_host: 'RPI4'
+#  vars:
+#    ansible_user: USER
+#    ansible_ssh_user: USER
+#    ansible_ssh_pass: PASSWORD
+#    ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
 
 #windows:
 #  hosts:
