@@ -1,20 +1,34 @@
 ---
+all:
+  hosts:
+    r510:
+      ansible_host: 'R510'
+    r710:
+      ansible_host: 'R710'
+    rw710:
+      ansible_host: 'RW710'
+    r820:
+      ansible_host: 'R820'
+    gr1080:
+      ansible_host: 'GR1080'
+  vars:
+    ansible_user: USER
+    ansible_ssh_user: USER
+    ansible_ssh_pass: PASSWORD
+    ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
+
 homelab:
   hosts:
     r510:
       ansible_host: 'R510'
     r710:
       ansible_host: 'R710'
-#    r820:
-#      ansible_host: 'R820'
-#    rpi4:
-#      ansible_host: 'RPI4'
-#    gamerig:
-#      ansible_host: 'GameRig'
-#    gpdwin4:
-#      ansible_host: 'GPDWin4'
-#    hpdv6:
-#      ansible_host: 'HPDV6'
+    rw710:
+      ansible_host: 'RW710'
+    r820:
+      ansible_host: 'R820'
+    gr1080:
+      ansible_host: 'GR1080'
   vars:
     ansible_user: USER
     ansible_ssh_user: USER
@@ -27,34 +41,12 @@ poweredge:
       ansible_host: 'R510'
     r710:
       ansible_host: 'R710'
-#    r820:
-#      ansible_host: 'R820'
+    rw710:
+      ansible_host: 'RW710'
+    r820:
+      ansible_host: 'R820'
   vars:
     ansible_user: USER
     ansible_ssh_user: USER
     ansible_ssh_pass: PASSWORD
     ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
-
-#raspberry:
-#  hosts:
-#    rpi4:
-#      ansible_host: 'RPI4'
-#  vars:
-#    ansible_user: USER
-#    ansible_ssh_user: USER
-#    ansible_ssh_pass: PASSWORD
-#    ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
-
-#windows:
-#  hosts:
-#    gamerig:
-#      ansible_host: 'GameRig'
-#    gpdwin4:
-#      ansible_host: 'GPDWin4'
-#    hpdv6:
-#      ansible_host: 'HPDV6'
-#  vars:
-#    ansible_user: USER
-#    ansible_ssh_user: USER
-#    ansible_ssh_pass: PASSWORD
-#    ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
